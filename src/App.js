@@ -3,16 +3,19 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap CSS
 
-// const list = [
-//   {}
-// ]
+// const list = [];
 
 export default function App() {
-  const [todo, setToDo] = useState("");
-  return <UI todo={todo} setToDo={setToDo} />;
+  const [items, setItems] = useState([]);
+  console.log(items);
+
+  
+
+  return <Form setItems={setItems} />;
 }
 
-function UI({ todo, setToDo }) {
+function Form({ setItems }) {
+  const [todo, setToDo] = useState("");
   return (
     <div className="container">
       <form onSubmit={HandleSubmit}>
@@ -25,9 +28,13 @@ function UI({ todo, setToDo }) {
       </form>
     </div>
   );
-}
-
-function HandleSubmit(e) {
-  e.preventDefault();
-  console.log(e);
+  function HandleSubmit(e) {
+    e.preventDefault();
+    const newTodo = {
+      description: todo,
+      id: Date.now(),
+    };
+    setItems(newTodo);
+    setToDo("");
+  }
 }
