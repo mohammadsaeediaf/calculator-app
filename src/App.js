@@ -9,12 +9,14 @@ export default function App() {
   const [items, setItems] = useState([]);
   console.log(items);
 
-  
+  function handleAddItem(item) {
+    setItems((items) => [...items, item]);
+  }
 
-  return <Form setItems={setItems} />;
+  return <Form onAddItem={handleAddItem} />;
 }
 
-function Form({ setItems }) {
+function Form({ onAddItem }) {
   const [todo, setToDo] = useState("");
   return (
     <div className="container">
@@ -30,11 +32,12 @@ function Form({ setItems }) {
   );
   function HandleSubmit(e) {
     e.preventDefault();
+    if (!todo) return;
     const newTodo = {
       description: todo,
       id: Date.now(),
     };
-    setItems(newTodo);
+    onAddItem(newTodo);
     setToDo("");
   }
 }
