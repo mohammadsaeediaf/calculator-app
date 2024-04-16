@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap CSS
 
 // const list = [];
@@ -13,14 +13,19 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
-  return <Form onAddItem={handleAddItem} />;
+  return (
+    <div className="todo-section">
+      <Form onAddItem={handleAddItem} />
+      <DisplayItems items={items} />
+    </div>
+  );
 }
 
 function Form({ onAddItem }) {
   const [todo, setToDo] = useState("");
   return (
     <div className="container">
-      <form onSubmit={HandleSubmit}>
+      <form className="form" onSubmit={HandleSubmit}>
         <input
           type="text"
           value={todo}
@@ -30,6 +35,7 @@ function Form({ onAddItem }) {
       </form>
     </div>
   );
+
   function HandleSubmit(e) {
     e.preventDefault();
     if (!todo) return;
@@ -40,4 +46,14 @@ function Form({ onAddItem }) {
     onAddItem(newTodo);
     setToDo("");
   }
+}
+
+function DisplayItems({ items }) {
+  return (
+    <ul className="items">
+      {items.map((item) => (
+        <li className="items-list" key={item.id}>{item.description}</li>
+      ))}
+    </ul>
+  );
 }
