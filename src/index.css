@@ -3,13 +3,46 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --bg: #2e393d;
+  --primary: #e87235;
+  --secondary: #424b4e;
+}
+
 body {
-  background: #000;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+}
+
+.todo-section {
+  width: fit-content;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px var(--secondary);
+  background: var(--secondary);
+}
+
+/* Form content Style */
+
+.form input {
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  width: 15rem;
+}
+
+.form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  background: var(--primary);
+  font-weight: bold;
 }
 
 .items {
-  display: flex;
   font-size: 1.5rem;
+  color: var(--primary);
 }
 
 .items button {
@@ -18,4 +51,8 @@ body {
   border: none;
   outline: none;
   font-weight: bold;
+}
+
+.item-list{
+  display: flex;
 }
