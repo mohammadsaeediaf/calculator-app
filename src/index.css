@@ -2,6 +2,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+li {
+  list-style: none;
+}
 
 :root {
   --bg: #2e393d;
@@ -10,14 +13,15 @@
 }
 
 body {
-  background-color: var(--bg);
+  background-color: var(--bg) !important;
   display: flex;
   justify-content: center;
 }
 
 .todo-section {
-  width: fit-content;
-  padding: 2rem;
+  width: 50rem;
+  padding: 5rem;
+  margin: 5rem 0;
   border-radius: 1rem;
   box-shadow: 1px 1px 10px var(--secondary);
   background: var(--secondary);
@@ -25,19 +29,27 @@ body {
 
 /* Form content Style */
 
+.form{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .form input {
-  padding: 0.5rem;
+  padding: 0.7rem;
   border: none;
   outline: none;
   width: 15rem;
 }
 
 .form button {
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
   border: none;
   outline: none;
   background: var(--primary);
   font-weight: bold;
+  box-shadow: 1px 1px 5px var(--primary);
+  cursor: pointer;
 }
 
 .items {
@@ -53,6 +65,23 @@ body {
   font-weight: bold;
 }
 
-.item-list{
+.items {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.items-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  color: var(--bg);
+  font-weight: bold;
+  padding: 0.5rem;
+  width: 49%;
+}
+
+.items-list img {
+  cursor: pointer;
 }

@@ -13,10 +13,16 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
   return (
-    <div className="todo-section">
-      <Form onAddItem={handleAddItem} />
-      <DisplayItems items={items} />
+    <div className="container">
+      <div className="todo-section">
+        <Form onAddItem={handleAddItem} />
+        <DisplayItems items={items} onDeleteItem={handleDeleteItem} />
+      </div>
     </div>
   );
 }
@@ -48,12 +54,21 @@ function Form({ onAddItem }) {
   }
 }
 
-function DisplayItems({ items }) {
+function DisplayItems({ items, onDeleteItem }) {
   return (
-    <ul className="items">
-      {items.map((item) => (
-        <li className="items-list" key={item.id}>{item.description}</li>
-      ))}
-    </ul>
+    <div className="container">
+      <div className="items">
+        {items.map((item) => (
+          <p className="items-list col-6" key={item.id}>
+            {item.description}
+            <img
+              onClick={() => onDeleteItem(item.id)}
+              src={require("./assets/trash-icon.png")}
+              alt="delete-icon"
+            />
+          </p>
+        ))}
+      </div>
+    </div>
   );
 }
